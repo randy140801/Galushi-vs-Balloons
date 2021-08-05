@@ -32,12 +32,20 @@ public class GameOverManager : MonoBehaviour
 
         if (scene == 2)
         {
-            StartCoroutine(Animat("¿Estas Listo?", 0));
-            StartCoroutine(Animat("3", 4));
-            StartCoroutine(Animat("2", 6));
-            StartCoroutine(Animat("1", 8));
-            StartCoroutine(Animat("EMPECEMOS", 10));
-            StartCoroutine(ResetAnimat(11, nextscene));
+            if (nextscene == 3)
+            {
+                StartCoroutine(Animat("Nivel 1", 0));
+            }
+            else
+            {
+                StartCoroutine(Animat("Nivel 2", 0));
+            }
+            StartCoroutine(Animat("¿Estas Listo?", 5));
+            StartCoroutine(Animat("3", 7));
+            StartCoroutine(Animat("2", 9));
+            StartCoroutine(Animat("1", 11));
+            StartCoroutine(Animat("EMPECEMOS", 13));
+            StartCoroutine(ResetAnimat(14, nextscene));
         }
     }
 
@@ -51,6 +59,13 @@ public class GameOverManager : MonoBehaviour
             anim.SetTrigger("GameOver");
 
 			restartTimer += Time.deltaTime;
+            ScoreManager.score = 0;
+
+            if (level2)
+            {
+                ScoreManager.score = 500;
+            }
+
 
 			if (restartTimer >= restartDelay) {
               int scene = SceneManager.GetActiveScene().buildIndex;
@@ -75,17 +90,17 @@ public class GameOverManager : MonoBehaviour
         }
         else if (ScoreManager.score >= 1000 && level2)
         {
-            txt.text = "JUEGO TERMINADO";
-            anim.SetTrigger("GameOver");
+            StartCoroutine(Animat("JUEGO TERMINADO", 0));
 
             restartTimer += Time.deltaTime;
 
             if (restartTimer >= restartDelay)
             {
-                SceneManager.LoadScene(1);
+                StartCoroutine(ResetAnimat(5, 1));
             }
         }
-       //ScoreManager.score = 500;
+       //ScoreManager.score = 1500;
+       //level2 = true;
     }
 
     IEnumerator Animat(string texto, int seconds)

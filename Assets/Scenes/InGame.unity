@@ -4163,8 +4163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b284be4b37585144980d582b602ed2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 500
-  currentHealth: 500
+  startingHealth: 100
+  currentHealth: 100
   healthSlider: {fileID: 1052338766899453241}
   damageImage: {fileID: 1052338766581180421}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}

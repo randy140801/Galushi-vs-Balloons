@@ -68,8 +68,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void RecuperarVida(int amount)
     {
-        currentHealth += amount;
-        healthSlider.value = currentHealth;
+        if (currentHealth <= 100)
+        {
+            currentHealth += amount;
+            healthSlider.value = currentHealth;
+        }
+        
     }
 
     void Death ()
